@@ -1,9 +1,15 @@
 name: artifact
 on: push
- 
+env:
+    USER: gha-demo 
+    PASS: PASS
+
 jobs:
 
   artifact:
+    env: 
+        USER_env: bingo
+
     runs-on: ubuntu-latest
     outputs:
         output1: ${{ steps.publish.scriptfile }}
@@ -35,6 +41,9 @@ jobs:
 
       - name: name outputs
         run: echo "${{ steps.publish.scriptfile }}"
+
+      - name: show env
+        run: echo $USER_env
 
 
 
