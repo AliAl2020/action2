@@ -1,4 +1,4 @@
-name: Deployment Workfolow
+name: event pull_req open
 on: 
   pull_request:
     types:
