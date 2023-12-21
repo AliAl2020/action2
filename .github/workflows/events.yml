@@ -1,0 +1,15 @@
+name: Deployment Workfolow
+on: 
+  pull_request:
+    types:
+      - opened
+  #workflow_dispatch:
+jobs:
+
+  pull_req:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: pull_request is open
+        run: echo "open ing pull request"
