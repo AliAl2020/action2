@@ -10,7 +10,13 @@ jobs:
     steps:
       - name: get Code
         uses: actions/checkout@v3
-        
+
+      - name: chash-dependices
+        uses: actions/cache@v3
+        with: 
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      
       - name: install dependencies
         run: npm ci
 
