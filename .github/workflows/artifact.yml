@@ -1,0 +1,22 @@
+name: artifact
+on: workflow_dispatch
+ 
+jobs:
+
+  artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get Code
+        uses: actions/checkout@v3
+        
+      - name: install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+            name: dist-files
+            path: |
+                dist
+                dist1.json
