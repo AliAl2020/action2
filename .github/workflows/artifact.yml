@@ -20,12 +20,12 @@ jobs:
       - name: upload artifacts
         uses: actions/upload-artifact@v3
         with:
-            name: dist-files2
-            path: dist2
+            name: dist-files
+            path: dist
 
       - name: Publish JS filename
         id: publish
-        run: find dist2/assets/*.js -type f -execdir echo 'scriptfile={}' >> $GITHUB_OUTPUT ';'
+        run: find dist/assets/*.js -type f -execdir echo 'scriptfile={}' >> $GITHUB_OUTPUT ';'
 
 
 
