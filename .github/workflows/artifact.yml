@@ -28,7 +28,7 @@ jobs:
         run: find dist/assets/*.js -type f -execdir echo 'scriptfile={}' >> $GITHUB_OUTPUT ';'
 
       - name: name outputs
-        run: echo ${{ steps.outputs.output1 }}
+        run: echo "${{ steps.outputs.output1 }}"
 
 
 
