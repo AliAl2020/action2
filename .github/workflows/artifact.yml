@@ -44,6 +44,8 @@ jobs:
 
       - name: show env
         run: echo $USER_env
+      - name: show secrets
+        run: echo {{ secrets.MONGODB}}
 
 
 
