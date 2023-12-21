@@ -4,7 +4,7 @@ on: push
 jobs:
 
   artifact:
-    runs-on: ubuntu-latest#
+    runs-on: ubuntu-latest
     outputs:
         output1: ${{ steps.publish.scriptfile }}
     steps:
