@@ -48,7 +48,7 @@ jobs:
       - name: show secrets
         run: echo "${{ secrets.MONGODB }}"
       - name: show environment_VAR
-        run: echo "${{ variables.VAR }}"
+        run: echo "${{ vars.VAR }}"
 
 
 
