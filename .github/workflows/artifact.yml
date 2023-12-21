@@ -7,9 +7,10 @@ env:
 jobs:
 
   artifact:
+    environment: PROD
     env: 
         USER_env: bingo
-
+    
     runs-on: ubuntu-latest
     outputs:
         output1: ${{ steps.publish.scriptfile }}
@@ -45,7 +46,10 @@ jobs:
       - name: show env
         run: echo $USER_env
       - name: show secrets
-        run: echo "${{ secrets.MONGODB}}"
+        run: echo "${{ secrets.MONGODB }}"
+      - name: show environment_VAR
+        run: echo "${{ variables.VAR }}"
+
 
 
 
