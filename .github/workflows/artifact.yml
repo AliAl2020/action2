@@ -15,13 +15,14 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+
+      - name: Publish HS filename
+        id: publish
+        run: find dist2/assets/*.js type -f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
+        
       - name: upload artifacts
         uses: actions/upload-artifact@v3
         with:
             name: dist-files2
-            path: |
-                dist2
-                dist2.json
-      - name: Publish HS filename
-        id: publish
-        run: find dist/assets/*.js type -f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
+            path: dist2
+
