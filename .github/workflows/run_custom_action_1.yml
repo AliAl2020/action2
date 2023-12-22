@@ -1,5 +1,8 @@
 name: run custom action 1
-on: push
+on: 
+    push:
+        branches: 
+        - dev2
 jobs:
     custom_action_one:  
         runs-on: ubuntu-latest
