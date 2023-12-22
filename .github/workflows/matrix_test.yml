@@ -1,4 +1,4 @@
-name: continue_on Error
+name: Matrix_include_exclude
 on: 
   push:
     branches:
@@ -11,6 +11,13 @@ jobs:
       matrix:
         node-versions: [12,14,16]
         operators: [ubuntu-latest, windows-latest]
+        include:
+          - node-versions: 18
+            operators: ubuntu-latest
+        exclude: 
+          - node-versions: 14
+            operators: ubuntu-latest
+
     runs-on: ${{ matrix.operators}}
     steps:
       - name: Get code from repository
