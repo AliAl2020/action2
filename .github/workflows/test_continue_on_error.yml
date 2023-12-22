@@ -1,0 +1,66 @@
+name: continue_on Error
+on: 
+  push:
+    branches:
+      - main
+      - 'dev-*'
+      - dev2
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code from repository
+        uses: actions/checkout@v3
+      - name:  install Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: install dependency
+        run: npm ci
+      - name: Run tests
+        continue-on-error: true
+        id: testing-id
+        run: npm test
+      - name: show results failure
+        if: steps.testing-id.outcome == 'failure'
+        run: echo "test is not successful"
+      - name: show results sucess
+        if:  steps.testing-id.outcome == 'success'
+        run: echo "test is  successful"
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code from repository
+        uses: actions/checkout@v3
+      - name:  install Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: install dependency
+        run: npm ci
+      - name: Deploy
+        run: echo "Deploying"
+  reports_test_failed:
+    needs: [test]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: report_failed_test
+        run:  echo "Running failed(job) failed test"
+  reports_test_success:
+    needs: [test]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: report_success_test
+        run:  echo "Running success(job) success test"
+
+  reports_deploy_failed:
+      needs: [deploy]
+      if: failure() 
+      runs-on: ubuntu-latest
+      steps:
+        - name: report_failed_deployed
+          run:  echo "Running deploy failed"
+
