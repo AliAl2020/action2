@@ -40,3 +40,26 @@ jobs:
         run: npm ci
       - name: Deploy
         run: echo "Deploying"
+  reports_test_failed:
+    needs: [test]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: report_failed_test
+        run:  echo "Running failed(job) failed test"
+  reports_test_success:
+    needs: [test]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: report_success_test
+        run:  echo "Running success(job) success test"
+
+  reports_deploy_failed:
+      needs: [deploy]
+      if: failure() 
+      runs-on: ubuntu-latest
+      steps:
+        - name: report_failed_deployed
+          run:  echo "Running deploy failed"
+
