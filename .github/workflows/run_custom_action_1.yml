@@ -8,4 +8,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: use Custom Action 1
-              uses: ./.github/actions/echos@{branch=dev2}
+              uses: ./.github/actions/echos@{branches=dev2}
