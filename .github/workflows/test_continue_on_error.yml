@@ -43,7 +43,7 @@ jobs:
         run: echo "Deploying"
   reports_test_failed:
     needs: [test]
-    if: failure()
+    if: failure() || needs.test.steps.testing-id.outcome == 'failure'
     runs-on: ubuntu-latest
     steps:
       - name: report_failed_test
