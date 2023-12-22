@@ -18,7 +18,14 @@ jobs:
       - name: install dependency
         run: npm ci
       - name: Run tests
+        id: testing-id
         run: npm test
+      - name: show results
+        if: steps.testing-id.outcome == 'failure'
+        run: echo "test is not successful"
+      - name: show results
+        if: steps.testing-id.outcome == 'success'
+        run: echo "test is not successful"
   deploy:
     needs: test
     runs-on: ubuntu-latest
