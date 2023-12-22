@@ -1,10 +1,10 @@
 name: call another workflows
-on: 
-  push:
-    branches:
-      - main
-      - 'dev-*'
-      - dev2
+on:   
+    push:
+        branches:
+            - main
+            - 'dev-*'
+            - dev2
 jobs:
   calling_workflow:
-    uses: ./.github/worksflows/sub_workflow_echos.yml
+    uses: ./.github/workflows/sub_workflow_echos.yml
