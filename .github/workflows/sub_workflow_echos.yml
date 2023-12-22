@@ -1,0 +1,8 @@
+name: sub_workflow_echos
+on: workflow_call
+jobs:
+    info: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: anybody call sub_workflow_echos
+              run: echo "call sub_workflow_echos"
