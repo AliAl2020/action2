@@ -8,11 +8,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v2
+              uses:  actions/checkout@v2
 
             - name: use Custom Action 1
               uses: ./.github/actions/echos
+              with: 
+                p1: "from deploy"
 
 
-
-#yes
