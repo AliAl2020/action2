@@ -8,4 +8,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: use Custom Action 1
-              uses: ./.github/actions/echos/
+              uses: ./.github/actions/echos/action.yml
