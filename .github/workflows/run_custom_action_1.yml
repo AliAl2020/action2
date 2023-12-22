@@ -7,5 +7,7 @@ jobs:
     custom_action_one:  
         runs-on: ubuntu-latest
         steps:
+            - name : change branch
+              run: git checkout dev2
             - name: use Custom Action 1
               uses: ./.github/actions/echos
