@@ -50,11 +50,13 @@ jobs:
         run:  echo "Running failed(job) failed test"
   reports_test_step_failed:
     needs: [test]
-    if: needs.test.steps.testing-id.outcome == 'failure'
+    
     runs-on: ubuntu-latest
     steps:
       - name: report_failed_test
+        if: needs.test.steps.testing-id.outcome == 'failure'
         run:  echo "Running failed(test_step) "
+        
   reports_test_success:
     needs: [test]
     if: success()
