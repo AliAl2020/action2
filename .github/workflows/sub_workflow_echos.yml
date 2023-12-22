@@ -1,8 +1,16 @@
 name: sub_workflow_echos
-on: workflow_call
+on: 
+    workflow_call:
+        inputs:
+            param1:
+                description: new paramter
+                required: false
+                default: yes
+                type: string
+
 jobs:
     info: 
         runs-on: ubuntu-latest
         steps:
             - name: anybody call sub_workflow_echos
-              run: echo "call sub_workflow_echos"
+              run: echo "${{ inputs.param1 }}"
